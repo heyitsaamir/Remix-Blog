@@ -1,19 +1,18 @@
-import { LoaderFunction, useLoaderData } from "remix";
-import invariant from "tiny-invariant";
-import { getPost, Post } from "~/post";
+import { LoaderFunction, useLoaderData } from 'remix'
+import invariant from 'tiny-invariant'
+import { MarkdownContainer } from '~/components/PostMarkdown'
+import { getPost, Post } from '~/post'
 
-export const loader: LoaderFunction = async ({
-  params
-}) => {
-  invariant(params.slug, "expected params.slug");
-  return getPost(params.slug);
-};
+export const loader: LoaderFunction = async ({ params }) => {
+  invariant(params.slug, 'expected params.slug')
+  return getPost(params.slug)
+}
 
 export default function PostSlug() {
-  const post = useLoaderData<Post>();
+  const post = useLoaderData<Post>()
   return (
-    <div>
+    <MarkdownContainer>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-    </div>
-  );
+    </MarkdownContainer>
+  )
 }

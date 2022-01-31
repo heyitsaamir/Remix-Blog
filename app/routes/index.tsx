@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   font-family: system-ui, sans-serif;
-  line-height: 1.4
-`
+  line-height: 1.4;
+`;
 
 export default function Index() {
   return (
