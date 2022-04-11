@@ -38,13 +38,7 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        {process.env.NODE_ENV === 'development'
-          ? styles !== null && (
-              <style
-                dangerouslySetInnerHTML={{ __html: `</style>${styles}<style>` }}
-              />
-            )
-          : styles}
+        {typeof document === 'undefined' ? '__STYLES__' : null}
       </head>
       <body style={{ margin: 0 }}>
         <Layout>

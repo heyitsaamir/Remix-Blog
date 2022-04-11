@@ -11,7 +11,7 @@ export default function handleRequest(
   remixContext: EntryContext
 ) {
   const sheet = new ServerStyleSheet()
-  ReactDOMServer.renderToString(
+  let markup = ReactDOMServer.renderToString(
     sheet.collectStyles(
       <StylesContext.Provider value={null}>
         <RemixServer context={remixContext} url={request.url} />
@@ -21,12 +21,7 @@ export default function handleRequest(
 
   const styles = sheet.getStyleTags()
   sheet.seal()
-
-  const markup = ReactDOMServer.renderToString(
-    <StylesContext.Provider value={styles}>
-      <RemixServer context={remixContext} url={request.url} />
-    </StylesContext.Provider>
-  )
+  markup = markup.replace('__STYLES__', styles)
 
   responseHeaders.set('Content-Type', 'text/html')
 
