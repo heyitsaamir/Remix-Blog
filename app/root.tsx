@@ -8,11 +8,8 @@ import {
   ScrollRestoration,
 } from 'remix'
 import type { MetaFunction } from 'remix'
-import { useContext } from 'react'
-import StylesContext from './StylesContext'
-import { Layout, Main, Nav } from './components/Layout'
 import { Logo } from './components/Logo'
-import { ThemeSwitcher } from './components/ThemeSwitcher'
+import mainStyles from '~/styles/app.css'
 
 export const meta: MetaFunction = () => {
   return { title: 'Aamir Jawaid' }
@@ -26,11 +23,15 @@ export const links = () => {
       rel: 'stylesheet',
       href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap',
     },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Whisper&display=swap',
+    },
+    { rel: 'stylesheet', href: mainStyles },
   ]
 }
 
 export default function App() {
-  const styles = useContext(StylesContext)
   return (
     <html lang="en">
       <head>
@@ -38,24 +39,23 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        {typeof document === 'undefined' ? '__STYLES__' : null}
       </head>
       <body style={{ margin: 0 }}>
-        <Layout>
-          <Nav>
-            <Logo />
-            <ul>
-              <li>
-                <Link to="/posts">Posts</Link>
-              </li>
-            </ul>
-          </Nav>
-          <Main>
-            <ThemeSwitcher>
+        <div className="container mx-auto px-10 py-24">
+          <div className="flex divide-x-2 divide-gray-100">
+            <aside className="flex-initial w-1/5 pr-10">
+              <Logo />
+              <ul className="pt-3 list-none">
+                <li className="mx-0">
+                  <Link to="/posts">Posts</Link>
+                </li>
+              </ul>
+            </aside>
+            <main className="flex-initial w-4/5 pl-10 max-w-screen-lg">
               <Outlet />
-            </ThemeSwitcher>
-          </Main>
-        </Layout>
+            </main>
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}

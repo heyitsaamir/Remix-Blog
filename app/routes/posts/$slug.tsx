@@ -11,8 +11,8 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function PostSlug() {
   const post = useLoaderData<Post>()
   return (
-    <MarkdownContainer>
+    <div>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-    </MarkdownContainer>
+    </div>
   )
 }

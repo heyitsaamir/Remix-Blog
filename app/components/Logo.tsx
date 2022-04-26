@@ -8,14 +8,14 @@ export const LogoContainer = styled.div`
   padding-inline-end: 25px;
 
   span {
-    background: #c6e5fb;
+    font-family: 'Whisper', cursive;
   }
 `
 
 export const Logo = () => {
   return (
-    <LogoContainer>
-      <span>aamir j.</span>
-    </LogoContainer>
+    <div className="w-full border-b-4 border-amber-400 text-center">
+      <span className="text-3xl font-serif">aamir j.</span>
+    </div>
   )
 }
