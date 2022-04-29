@@ -10,6 +10,7 @@ import {
 import type { MetaFunction } from 'remix'
 import { Logo } from './components/Logo'
 import mainStyles from '~/styles/app.css'
+import { ThemeSwitcher } from './components/ThemeSwitcher'
 
 export const meta: MetaFunction = () => {
   return { title: 'Aamir Jawaid' }
@@ -40,22 +41,24 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body style={{ margin: 0 }}>
-        <div className="container mx-auto px-10 py-24">
-          <div className="flex divide-x-2 divide-gray-100">
-            <aside className="flex-initial w-1/5 pr-10">
-              <Logo />
-              <ul className="pt-3 list-none">
-                <li className="mx-0">
-                  <Link to="/posts">Posts</Link>
-                </li>
-              </ul>
-            </aside>
-            <main className="flex-initial w-4/5 pl-10 max-w-screen-lg">
-              <Outlet />
-            </main>
+      <body>
+        <ThemeSwitcher>
+          <div className="container mx-auto px-10 py-24">
+            <div className="flex divide-x-2 divide-gray-100">
+              <aside className="flex-initial w-1/5 pr-10">
+                <Logo />
+                <ul className="pt-3 list-none">
+                  <li className="mx-0">
+                    <Link to="/posts">Posts</Link>
+                  </li>
+                </ul>
+              </aside>
+              <main className="flex-initial w-4/5 pl-10 max-w-screen-lg">
+                <Outlet />
+              </main>
+            </div>
           </div>
-        </div>
+        </ThemeSwitcher>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}

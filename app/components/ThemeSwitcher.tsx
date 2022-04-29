@@ -5,8 +5,6 @@ import React, {
   useMemo,
   useState,
 } from 'react'
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { lightTheme, darkTheme } from './theme'
 import { hexWithAlpha } from './utils'
 
 type ThemeType = 'light' | 'dark'
@@ -23,35 +21,7 @@ const Context = React.createContext<ThemeWithSwitcher>({
   currentTheme: 'light',
 })
 
-const GlobalStyle = createGlobalStyle`
-  html {
-    --main-width: 720px;
-    --gap: 24px;
-    --radius: 8px;
-
-    @media screen and (max-width: 768px) {
-      --gap: 14px;
-    }
-  }
-
-  body {
-    background-color: ${(props) => props.theme.colors.background};
-
-    h1,
-    h2,
-    h3 {
-      font-family: "Roboto Slab", serif;
-    }
-  }
-
-  a {
-    font-weight: 400;
-    color: ${(props) => props.theme.colors.primaryBrand};
-  }
-  a:hover {
-    color: ${(props) => hexWithAlpha(props.theme.colors.primaryBrand, 0.7)};
-  }
-`
+const ThemeProvider = Context.Provider
 
 const doesUserPreferDarkMode = () => {
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
@@ -70,7 +40,7 @@ const retrieveFromLocal = (): ThemeType | undefined => {
 }
 
 export const ThemeSwitcher = (props: PropsWithChildren<{}>) => {
-  const [currentTheme, setTheme] = useState<ThemeType>('dark')
+  const [currentTheme, setTheme] = useState<ThemeType>('light')
 
   useEffect(() => {
     const themeInLocalStorage = retrieveFromLocal()
@@ -98,16 +68,10 @@ export const ThemeSwitcher = (props: PropsWithChildren<{}>) => {
     }),
     [setTheme, currentTheme]
   )
-  const theme = useMemo(
-    () => (currentTheme === 'light' ? lightTheme : darkTheme),
-    [currentTheme]
-  )
+
   return (
     <Context.Provider value={contextValue}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        {props.children}
-      </ThemeProvider>
+      <div className={currentTheme}>{props.children}</div>
     </Context.Provider>
   )
 }

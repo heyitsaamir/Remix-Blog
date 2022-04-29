@@ -27,4 +27,16 @@
   p {
     @apply my-2;
   }
+  blockquote {
+    @apply ml-6 pl-6 border-l-4 border-l-amber-400;
+  }
+  code {
+    @apply text-sm;
+  }
+  pre {
+    @apply text-sm border-2 shadow-sm p-4 rounded-md;
+  }
+  img + em {
+    @apply block text-xs text-slate-600;
+  }
 }
