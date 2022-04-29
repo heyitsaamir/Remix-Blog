@@ -91,9 +91,9 @@ fragment MyConnection on Connection {
 
 Other options I had considered was adding an `index` field to edges (hard to get this value because it's not trivial to compute)
 
-We are going to add fields `count`which will be the total count of all the nodes in the query, and `offset` which is the count of nodes after the page that's requested. These two fields also allow us to more accurately calculate `hasPrevious` (for forward pagination) and `hasNext` (for backward pagination). Here's how we'll calculate this value:
+We are going to add fields `count` which will be the total count of all the nodes in the query, and `offset` which is the count of nodes after the page that's requested. These two fields also allow us to more accurately calculate `hasPrevious` (for forward pagination) and `hasNext` (for backward pagination). Here's how we'll calculate this value:
 
-`hasPrevious` = `offset` > 0
+`hasPrevious = offset > 0`
 
 The relay connection code will look something like this:
 

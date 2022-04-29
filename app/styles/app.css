@@ -423,6 +423,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
+body {
+  line-height: 1.5rem;
+}
+
 h1 {
   padding-top: 1.5rem;
   padding-bottom: 0.5rem;
@@ -492,8 +496,8 @@ li {
 }
 
 p {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 blockquote {
@@ -504,9 +508,12 @@ blockquote {
   padding-left: 1.5rem;
 }
 
-code {
+p > code {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
   font-size: 0.875rem;
   line-height: 1.25rem;
+  font-style: italic;
 }
 
 pre {
@@ -673,6 +680,11 @@ img + em {
 .py-24 {
   padding-top: 6rem;
   padding-bottom: 6rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pr-10 {

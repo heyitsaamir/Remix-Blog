@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply leading-6;
+  }
   h1 {
     @apply text-3xl pt-6 pb-2 first:pt-0 last:pb-0;
   }
@@ -25,13 +28,13 @@
     @apply mx-8;
   }
   p {
-    @apply my-2;
+    @apply my-3;
   }
   blockquote {
     @apply ml-6 pl-6 border-l-4 border-l-amber-400;
   }
-  code {
-    @apply text-sm;
+  p > code {
+    @apply text-sm italic bg-slate-100;
   }
   pre {
     @apply text-sm border-2 shadow-sm p-4 rounded-md;
