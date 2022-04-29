@@ -10,7 +10,7 @@ import {
 import type { MetaFunction } from 'remix'
 import { Logo } from './components/Logo'
 import mainStyles from '~/styles/app.css'
-import { ThemeSwitcher } from './components/ThemeSwitcher'
+import { ThemeSwitchButton, ThemeSwitcher } from './components/ThemeSwitcher'
 
 export const meta: MetaFunction = () => {
   return { title: 'Aamir Jawaid' }
@@ -38,11 +38,18 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <script
+          src="https://kit.fontawesome.com/2c7b494e80.js"
+          crossorigin="anonymous"
+        ></script>
         <Meta />
         <Links />
       </head>
       <body>
         <ThemeSwitcher>
+          <div className="fixed bottom-10 right-10">
+            <ThemeSwitchButton />
+          </div>
           <div className="container mx-auto px-10 py-24">
             <div className="flex divide-x-2 divide-gray-100">
               <aside className="flex-initial w-1/5 pr-10">

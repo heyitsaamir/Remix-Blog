@@ -7,13 +7,13 @@
     @apply leading-6;
   }
   h1 {
-    @apply text-3xl pt-6 pb-2 first:pt-0 last:pb-0;
+    @apply text-4xl pt-6 pb-2 first:pt-0 last:pb-0;
   }
   h2 {
-    @apply text-2xl pt-5 pb-2 first:pt-0 last:pb-0;
+    @apply text-3xl pt-5 pb-2 first:pt-0 last:pb-0;
   }
   h3 {
-    @apply text-xl pt-4 pb-2 first:pt-0 last:pb-0;
+    @apply text-2xl pt-4 pb-2 first:pt-0 last:pb-0;
   }
   a {
     @apply text-amber-500 hover:text-amber-300;
@@ -34,10 +34,10 @@
     @apply ml-6 pl-6 border-l-4 border-l-amber-400;
   }
   p > code {
-    @apply text-sm italic bg-slate-100;
+    @apply text-sm italic bg-slate-100 dark:bg-slate-700;
   }
   pre {
-    @apply text-sm border-2 shadow-sm p-4 rounded-md;
+    @apply text-sm border-2 shadow-sm p-4 rounded-md overflow-x-auto;
   }
   img + em {
     @apply block text-xs text-slate-600;
